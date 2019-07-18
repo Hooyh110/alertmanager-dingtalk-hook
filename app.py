@@ -32,7 +32,7 @@ def send_alert(data):
     url = 'https://oapi.dingtalk.com/robot/send?access_token=%s' % token
     for output in data['alerts'][:]:
         try:
-            pod_name = output['labels']['pod_name']
+            pod_name = output['labels']['pod']
             namespace = output['labels']['namespace']
             message = output['annotations']['message']
         except KeyError:
