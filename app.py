@@ -33,12 +33,24 @@ def send_alert(data):
     for output in data['alerts'][:]:
         try:
             pod_name = output['labels']['pod']
+        except KeyError:
+            try:
+                pod_name = output['labels']['pod_name']
+            except KeyError:
+                pod_name = 'null'
+                
+        try:
             namespace = output['labels']['namespace']
+        except KeyError:
+            namespace = 'null'
+
+        try:
             message = output['annotations']['message']
         except KeyError:
-            pod_name = 'null'
-            namespace = 'null'
-            message = output['annotations']['description']
+            try:
+                message = output['annotations']['description']
+            except KeyError:
+                message = 'null'
 
         send_data = {
             "msgtype": "markdown",
