@@ -9,5 +9,7 @@ ADD . /src
 # install requirements
 RUN pip install -r requirements.txt
 
+EXPOSE 5000
+
 # run server
 CMD python app.py
