@@ -1,12 +1,12 @@
-# alertmanager-dingtalk-hook :lemon: :tangerine: :cherries: :cake: :grapes: :watermelon: :strawberry: :corn: :peach:
+# alertmanager-dingtalk-hook
 AlertManager 钉钉报警简单服务示例
 
-![alertmanager dingtalk message demo](https://www.qikqiak.com/k8s-book/docs/images/alertmanager-dingtalk-message.png)
+![alertmanager dingtalk message demo](/img/warn.png)
 
 ## 运行
 ### 使用`Docker`运行
 ```shell
-$ docker run -p 5000:5000 --name -e ROBOT_TOKEN=<钉钉机器人TOKEN> dingtalk-hook -d cnych/alertmanager-dingtalk-hook:v0.2
+$ docker run -p 5000:5000 --name -e ROBOT_TOKEN=<钉钉机器人TOKEN> dingtalk-hook -d yangpeng2468/alertmanager-dingtalk-hook:v1 
 ```
 
 ### 在`Kubernetes`集群中运行
@@ -31,7 +31,7 @@ spec:
     spec:
       containers:
       - name: dingtalk-hook
-        image: cnych/alertmanager-dingtalk-hook:v0.1.3
+        image: yangpeng2468/alertmanager-dingtalk-hook:v1
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 5000
